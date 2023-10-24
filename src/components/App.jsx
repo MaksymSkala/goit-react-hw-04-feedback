@@ -11,17 +11,17 @@ const App = () => {
     bad: 0,
   });
 
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+
+  const positiveFeedbackPercentage = () => {
+    return totalFeedback === 0 ? 0 : Math.round((feedback.good / totalFeedback) * 100);
+  };
+
   const onLeaveFeedback = (feedbackType) => {
     setFeedback((prevFeedback) => ({
       ...prevFeedback,
       [feedbackType]: prevFeedback[feedbackType] + 1,
     }));
-  };
-
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-
-  const positiveFeedbackPercentage = () => {
-    return totalFeedback === 0 ? 0 : Math.round((feedback.good / totalFeedback) * 100);
   };
 
   const feedbackOptions = [
